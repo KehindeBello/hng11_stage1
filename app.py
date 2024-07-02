@@ -22,9 +22,11 @@ def hello():
     print(f'Data - {data}')
     temperature = data['main']['temp'] - 273.15  # Convert Kelvin to Celsius
 
-    # Print the greeting message
-    print({"message": f"Hello {visitor_name}, the temperature is {temperature:.1f}°C in {city}"})
-    return jsonify({"message": f"Hello {visitor_name}, the temperature is {temperature:.1f}°C in {city}"})
+    return jsonify({
+        "client_ip": client_ip,
+        "location" : city,
+        "greeting": f"Hello {visitor_name}, the temperature is {temperature:.1f} degree Celcius in {city}"
+        })
 
 if __name__ == "__main__":
     app.run(debug=True)
