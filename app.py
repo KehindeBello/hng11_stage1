@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 @app.route('/api/hello', methods=['GET'])
 def hello():
-    visitor_name = request.args.get("visitor")
+    visitor_name = request.args.get("visitor_name")
     client_ip = request.remote_addr
     response = requests.get(f"https://ipgeolocation.abstractapi.com/v1/?api_key={os.getenv('ABSTRACT_API')}&ip_address={client_ip}")
     city = response.json()['city']
